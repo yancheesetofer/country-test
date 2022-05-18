@@ -6,22 +6,26 @@ import Countries from './components/Countries';
 function App() {
 
   const [countries, setCountries] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCountries = async () =>{
       const result = await axios('https://restcountries.com/v3.1/all');
       setCountries(result.data);
+      setIsLoading(false);
     }
     fetchCountries();
-  }, [])
+  }, []);
+  console.log(countries);
   return (
     <div className="App">
+      <header>Our World</header>
       {/* Dark Mode */}
 
       {/* Search form */}
 
       {/* Display Countries */}
-      <Countries countries ={countries}/>
+      <Countries countries ={countries} isLoading={isLoading}/>
     </div>
   );
 }
