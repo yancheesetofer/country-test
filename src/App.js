@@ -10,21 +10,18 @@ function App() {
 
   useEffect(() => {
     const fetchCountries = async () =>{
+      //wait for data
       const result = await axios('https://restcountries.com/v3.1/all');
       setCountries(result.data);
       setIsLoading(false);
     }
     fetchCountries();
   }, []);
-  console.log(countries);
+
   return (
     <div className="App">
       <header>Our World</header>
-      {/* Dark Mode */}
 
-      {/* Search form */}
-
-      {/* Display Countries */}
       <Countries countries ={countries} isLoading={isLoading}/>
     </div>
   );
